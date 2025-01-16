@@ -1,5 +1,5 @@
 remote_theme: pages-themes/slate@v0.2.0
 plugins:
   - jekyll-remote-theme # add this line to the plugins list if you already have one
-title: Brainy v2
-description: Qui trovi tutte le FAQ, guide e risorse utili.
+title: Brainy v2a
+description: bQui trovi tutte le FAQ, guide e risorse utili.
