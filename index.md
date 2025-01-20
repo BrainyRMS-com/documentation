@@ -3,5 +3,5 @@ Qui trovi tutte le FAQ, guide e risorse utili.
 
 ## Sezioni
 - [FAQ](faq.md)
-- [Tutorial](tutorial1.md)
+- [Tutorial Onboarding](tutorial-onboarding.md)
 - [Wiki](wiki1.md)
