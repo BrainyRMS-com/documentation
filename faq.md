@@ -13,5 +13,5 @@ Rilanciarla! (vedi esempio su Postman, non condivisibile qui per ragioni di segr
 
 ### Non ci sono i prezzi da (mese) in poi
 
-La future season è impostata correttamente? Se è stata messa che termina prima di (mese), allora è un comportamente corretto.
+La future season è impostata correttamente? Se è stata messa che termina prima di (mese), allora è un comportamento corretto.
 
