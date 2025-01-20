@@ -1,4 +1,4 @@
-# [documentation](https://brainyrms-com.github.io/documentation/)
+# documentation
 Contains FAQs, guides, how-to and general instructions
 
 
