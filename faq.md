@@ -15,3 +15,9 @@ Rilanciarla! (vedi esempio su Postman, non condivisibile qui per ragioni di segr
 
 La future season è impostata correttamente? Se è stata messa che termina prima di (mese), allora è un comportamento corretto.
 
+
+### Disattivare/Eliminare camere che si vedono ancora in frontend
+
+Nel `root_doc`, proprietà `roomtypes`, impostare: 
+- `disabled: true`
+- `quantity: 0`
