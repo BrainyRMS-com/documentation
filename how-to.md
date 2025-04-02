@@ -12,11 +12,13 @@
    5. Come "Role" scegliere `Storage Admin`.
 
 4. Esportare tutto il database oppure una singola Collection:
-   - `gcloud firestore export gs://luca_temp3`
-   - `gcloud firestore export gs://luca_temp3 --collection-ids=octorate`
+   - `gcloud firestore export gs://luca_temp3 --async`
+   - `gcloud firestore export gs://luca_temp3 --collection-ids=octorate --async`
 
 5. Spostarsi nel progetto `DEST`: `gcloud config set project brainy-v3`
 
 6. Elencare tutti gli oggetti dentro il bucket: `gsutil ls gs://luca_temp3/`
 
-7. Importare i dati: `gcloud firestore import gs://luca_temp3/2025-04-02T13:52:39_25825`
+7. Importare i dati: `gcloud firestore import gs://luca_temp3/2025-04-02T13:52:39_25825 --async`
+
+8. Ricordarsi di ritornare al progetto `SOURCE`: `gcloud config set project brainy-v2`
