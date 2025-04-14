@@ -21,3 +21,9 @@ La future season è impostata correttamente? Se è stata messa che termina prima
 Nel `root_doc`, proprietà `roomtypes`, impostare: 
 - `disabled: true`
 - `quantity: 0`
+
+
+### Le metriche Last Year non sono aggiornate
+
+Dopo qualsiasi modifica alla tabella `daily_recap` (o a qualche sua query dipendente), va rilanciato il calcolo delle LY metrics tramite un POST a:
+`https://importance-fine-tune-3cuixb5lia-ew.a.run.app/generate_last_year_metrics` con JSON `{"property_id": "ABCDEF", "pms_name": "passepartout" }`
