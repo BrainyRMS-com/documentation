@@ -30,3 +30,10 @@ Il problema tipico si manifesta nello storico, che è palesemente sbagliato (ad 
 Dopo qualsiasi modifica alla tabella `daily_recap` (o a qualche sua query dipendente), va rilanciato il calcolo delle LY metrics tramite un POST a:
 `https://importance-fine-tune-3cuixb5lia-ew.a.run.app/generate_last_year_metrics` con JSON `{"property_id": "ABCDEF", "pms_name": "passepartout" }`.
 L'aggiornamento dei dati è immediato.
+
+
+### Segnalazione di mancato caricamento storico
+
+- va rilanciato lo scarico delle prenotazioni (~10 minuti)
+- far girare la daily recap  (alcune ore!)
+- rilanciare le LY metrics (rapido)
