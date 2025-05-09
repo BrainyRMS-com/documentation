@@ -34,6 +34,6 @@ L'aggiornamento dei dati è immediato.
 
 ### Segnalazione di mancato caricamento storico
 
-- va rilanciato lo scarico delle prenotazioni (~10 minuti)
-- far girare la daily recap  (alcune ore!)
-- rilanciare le LY metrics (rapido)
+- Va rilanciato lo scarico delle prenotazioni (~10 minuti). Attenzione: se è Octorate, vanno chiamate entrambe le CF `octoratesync/syncHistory` e `octorate_downloadAll/init` (vedere i rispettivi esempi in Postman).
+- Far girare la daily recap  (alcune ore!). Per farla andare immediatamente, senza attendere il prossimo avvio schedulato, cliccare su `Schedule backfill`.
+- Rilanciare le LY metrics (vedi sezione precedente).
