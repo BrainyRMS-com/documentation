@@ -37,3 +37,9 @@ L'aggiornamento dei dati è immediato.
 - Va rilanciato lo scarico delle prenotazioni (~10 minuti). Attenzione: se è Octorate, vanno chiamate entrambe le CF `octoratesync/syncHistory` e `octorate_downloadAll/init` (vedere i rispettivi esempi in Postman).
 - Far girare la daily recap  (alcune ore!). Per farla andare immediatamente, senza attendere il prossimo avvio schedulato, cliccare su `Schedule backfill`.
 - Rilanciare le LY metrics (vedi sezione precedente).
+
+
+### Come elimino definitivamente le properties BMI dal front end?
+
+- prima fai unsubscribe
+- poi si possono cancellare da admin
