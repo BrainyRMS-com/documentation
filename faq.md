@@ -43,3 +43,14 @@ L'aggiornamento dei dati è immediato.
 
 - prima fai unsubscribe
 - poi si possono cancellare da admin
+
+
+### Come elimino definitivamente una Property Krossbooking?
+
+- Si elimina la Property tramite la pagina di Admin https://v2.brainyrms.com/pmsdashboard/manageproperties
+- Se in Firestore permane il documento è perché ci sono dei documenti nella subcollection `logs` che non sono stati cancellati con successo. 
+Eseguire lo script https://github.com/lucamarogna-brainy/aa_debug/blob/main/firestore_deleteOldDocuments.js (aprire il codice per leggere come usarlo).
+- Cancellare le Cloud Tasks Queue.
+- Cancellare i dati da BigQuery (ATTENZIONE: finora non l'ho mai fatto per precauzione).
+- Cancellare i token da Secret Manager.
+- Aggiornare il JSON contenente l'elenco delle property, che si trova qui: https://console.cloud.google.com/security/secret-manager/secret/kross-hotels-credentials/versions?inv=1&invt=Ab1lIg&project=brainy-v2
