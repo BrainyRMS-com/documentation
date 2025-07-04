@@ -21,12 +21,13 @@ La cosa non è affatto banale e si è proceduto come segue:
 5. In Firestore, clonare il root_doc originale "COUNTRYHOUSEILGIRASOLE" (si veda lo script apposito https://github.com/lucamarogna-brainy/aa_debug/blob/main/firestore_cloneRootDocument.js), due volte, avendo l'accortezza di nominarlo secondo le convezioni dei punti precedenti.
 6. Si può ora cancellare il root_doc originale "COUNTRYHOUSEILGIRASOLE", anche se non sono sicuro che poi la fatturazione, gli utenti ecc, siano ereditati dai due nuovi root_doc.
 7. Togliere dai rispettivi root_doc appena creati le camere che non appartengono alla property in questione; i campi interessati sono: `parent_child_mapping`, `roomtypes` e `room_count`.
-8. Scaricare le prenotazioni da apposita API https://passpartout-sync-27810994373.europe-west1.run.app/docs#/default/reservations_task_creator_reservations_task_creator_post, passando qualcosa come questo: ```{
+8. Nei nuovi root_doc, inserire la proprietà `group` valorizzata al reale nome della struttura (es. "COUNTRYHOUSEILGIRASOLE").
+9. Scaricare le prenotazioni da apposita API https://passpartout-sync-27810994373.europe-west1.run.app/docs#/default/reservations_task_creator_reservations_task_creator_post, passando qualcosa come questo: ```{
   "client_id": "countryhouseilgirasole",
   "last_modified_at": "2024-01-01 00:00:01",
   "is_initial_pull": false,
   "date_range": ["2024-01-01", "2026-06-24"]
-}``` **ATTENZIONE:** al momento (2025-06-24) c'è una IF statica nel codice che gestisce questa eccezione!
+}```
 
 
 **NB**: tutto questo funziona poiché è stata anche contestualmente aggiornata la tabella `data_view`.
