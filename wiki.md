@@ -12,10 +12,10 @@ and <https://importance-fine-tune-3cuixb5lia-ew.a.run.app/month_fine_tune>
 
 ### 2. runImportancesAndCompetitors
 
-Creates GCP Tasks for CF `importanceofthedays` and `competitors`.
+Creates GCP Tasks for CF `importance` and `competitors`.
 
 
-### 3. importanceofthedays
+### 3. importance
 
 It does the calculation and then:
 - saves the result to `systemImportance` field of the `days` document;

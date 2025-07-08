@@ -75,7 +75,7 @@ A seconda del tipo di integrazione, è possibile che si renda necessario scarica
 
 ### Deploying delle CF
 ```shell
-firebase deploy --only functions:getPropertiesInfo,functions:updatebaseprices,functions:competitors,functions:importanceofthedays,functions:irev1,functions:onresnotif
+firebase deploy --only functions:getPropertiesInfo,functions:updatebaseprices,functions:competitors,functions:importance,functions:irev1,functions:onresnotif
 ```
 
 ### Creazione delle collection di Firestore
