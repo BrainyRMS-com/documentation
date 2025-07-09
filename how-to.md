@@ -117,3 +117,7 @@ Va creato il file .py per la gestione delle camere e della loro mappatura.
 
 ### Modifica della CR smart-budget
 Va aggiunta la query necessaria, copiandola dalle precedenti.
+
+### Modifica del Secret "brainy-pms-mapping"
+Aggiungere al JSON contenuto la nuova mappatura:
+https://console.cloud.google.com/security/secret-manager/secret/brainy-pms-mapping/versions?inv=1&invt=Ab2TPw&project=brainy-v2
