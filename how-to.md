@@ -121,3 +121,50 @@ Va aggiunta la query necessaria, copiandola dalle precedenti.
 ### Modifica del Secret "brainy-pms-mapping"
 Aggiungere al JSON contenuto la nuova mappatura:
 https://console.cloud.google.com/security/secret-manager/secret/brainy-pms-mapping/versions?inv=1&invt=Ab2TPw&project=brainy-v2
+
+
+## Come trasformare una tabella BigQuery non-partizionata in partizionata (mantenedo i dati)
+
+Puoi creare una nuova tabella partizionata e clusterizzata sovrascrivendo quella esistente, utilizzando una tabella intermedia o eseguendo un'unica istruzione CREATE TABLE AS SELECT (CTAS) che è l'approccio più diretto ed efficiente.
+
+Ecco come puoi farlo in un unico passaggio, sovrascrivendo la tabella attuale con una nuova versione partizionata e clusterizzata.
+
+Puoi usare l'istruzione CREATE OR REPLACE TABLE ... AS SELECT per leggere i dati dalla tabella di origine e scriverli nella nuova tabella con la configurazione di partizionamento e clustering desiderata. Questo comando atomico sostituisce la vecchia tabella con la nuova in un'unica operazione.
+
+```sql
+# Passaggio 1: Creare una nuova tabella di appoggio
+CREATE OR REPLACE TABLE your_dataset.your_table_NEW
+PARTITION BY
+  DATE_TRUNC(date, MONTH)
+CLUSTER BY
+  city, receiveTime
+AS (
+  SELECT *
+  FROM your_dataset.your_table
+);
+
+# Passaggio 2: Cancellare la tabella originale
+DROP TABLE your_dataset.your_table;
+
+# Passaggio 3: Rinominare la nuova tabella
+ALTER TABLE your_dataset.your_table_new
+  RENAME TO your_table;
+```
+
+### Spiegazione della Query
+
+- `CREATE OR REPLACE TABLE your_dataset.your_table`: Questo comando crea una nuova tabella o ne sostituisce una esistente con lo stesso nome. L'intera operazione è atomica.
+- `PARTITION BY DATE_TRUNC(date, MONTH)`:
+  - `PARTITION BY` definisce la colonna e la granularità per il partizionamento. 
+  - `DATE_TRUNC(date, MONTH)` è una funzione che tronca il valore `TIMESTAMP` del campo `date` all'inizio del mese. Questo crea una partizione per ogni mese, che è esattamente ciò che hai richiesto. BigQuery gestirà automaticamente le partizioni mensili. 
+- `CLUSTER BY city, receiveTime`:
+  - `CLUSTER BY` specifica le colonne su cui basare il clustering. I dati all'interno di ogni partizione verranno ordinati fisicamente in base ai valori delle colonne `city` e `receiveTime`. 
+  - L'ordine delle colonne nel clustering è importante. Le query che filtrano prima per `city` e poi eventualmente per `receiveTime` otterranno i maggiori benefici in termini di performance e costi.
+- `AS (SELECT * FROM your_dataset.your_table)`: Questa sottoquery seleziona tutti i dati dalla tua tabella di origine. Questi dati verranno quindi inseriti nella nuova tabella con la struttura di partizionamento e clustering appena definita.
+
+### Vantaggi di Questo Approccio
+- Efficienza: È il modo più diretto per raggiungere il tuo obiettivo, senza passaggi manuali intermedi come la creazione e la successiva cancellazione di una tabella temporanea.
+- Atomicità: La sostituzione della tabella avviene in un'unica transazione. Non c'è un momento in cui la tabella non esiste o è vuota.
+- Semplicità: La sintassi è chiara e compatta.
+
+Dopo aver eseguito questa query, la tua tabella `your_dataset.your_table` sarà partizionata per mese sul campo `date` e clusterizzata per `city` e `receiveTime`, **mantenendo tutti i dati originali**.
