@@ -39,10 +39,12 @@ L'aggiornamento dei dati è immediato.
 - Rilanciare le LY metrics (vedi sezione precedente).
 
 
-### Come elimino definitivamente le properties BMI dal front end?
+### Come elimino definitivamente una Property (anche BI/BMI)?
 
-- prima fai unsubscribe
-- poi si possono cancellare da admin
+1. Sarebbe meglio fare unsubscribe lato cliente (se abbiamo l'account).
+2. Entrare come utente `v2admin` —> Manage Properties —> All Properties.
+3. Cercare la combinazione giusta di PMS e Property.
+4. Cliccare sul tasto `DELETE` della Property corretta.
 
 
 ### Come elimino definitivamente una Property Krossbooking?
