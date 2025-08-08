@@ -31,3 +31,11 @@ La cosa non è affatto banale e si è proceduto come segue:
 
 
 **NB**: tutto questo funziona poiché è stata anche contestualmente aggiornata la tabella `data_view`.
+
+
+## Onboarding ERICSOFT
+
+1. Andare su https://v2.brainyrms.com/pmsdashboard/manageproperties accedendo come admin.
+2. Sul tab "Create Property", impsotare i valori corretti. NB: se l'hotel è aperto tutto l'anno, impostare la stagione come 2024-01-01 — 2024-12-31.
+3. Facendo riferimento alla mail di Ericsoft, preparasi i due array `roomtypes` e `parent_child_mapping`, anche con valori non esatti (casomai si aggiusteranno in seguito).
+4. Appena il documento Firestore è stato scritto con i valori di default, modificare subito i due array di cui sopra (si consiglia l'uso dell'applicazione Refi).
