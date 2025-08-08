@@ -59,4 +59,5 @@ Eseguire lo script https://github.com/lucamarogna-brainy/aa_debug/blob/main/fire
 
 
 ### Cambiare la past season (aka `seasonSystem`)
-- Siccome vengono cambiati tutti i `base price`, è necessario inviare poi un refresh manuale (script `sendOnResNotif.js`).
+- Siccome vengono cambiati tutti i `base price`, è necessario inviare poi cliccare su `Settings -> Refresh Calculation`.
+
