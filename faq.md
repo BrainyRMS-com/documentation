@@ -56,3 +56,7 @@ Eseguire lo script https://github.com/lucamarogna-brainy/aa_debug/blob/main/fire
 - Cancellare i dati da BigQuery (ATTENZIONE: finora non l'ho mai fatto per precauzione).
 - Cancellare i token da Secret Manager.
 - Aggiornare il JSON contenente l'elenco delle property, che si trova qui: https://console.cloud.google.com/security/secret-manager/secret/kross-hotels-credentials/versions?inv=1&invt=Ab1lIg&project=brainy-v2
+
+
+### Cambiare la past season (aka `seasonSystem`)
+- Siccome vengono cambiati tutti i `base price`, è necessario inviare poi un refresh manuale (script `sendOnResNotif.js`).
