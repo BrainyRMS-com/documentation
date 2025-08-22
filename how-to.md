@@ -1,4 +1,4 @@
-## Come copiare i dati da un progetto Firestore ad un altro
+## Come copiare i dati da un progetto Firestore ad un altro {#copy-firestore-data}
 
 1. Da terminale, assicurarsi di essere nel progetto `SOURCE`: `gcloud config set project brainy-v2`
 
@@ -24,7 +24,7 @@
 8. Ricordarsi di ritornare al progetto `SOURCE`: `gcloud config set project brainy-v2`
 
 
-## Aggiunta di un PMS
+## Aggiunta di un PMS {#add-pms}}
 
 Quando viene aggiunto un PMS al sistema, vanno eseguite diverse procedure:
 
@@ -123,7 +123,7 @@ Aggiungere al JSON contenuto la nuova mappatura:
 https://console.cloud.google.com/security/secret-manager/secret/brainy-pms-mapping/versions?inv=1&invt=Ab2TPw&project=brainy-v2
 
 
-## Come trasformare una tabella BigQuery non-partizionata in partizionata (mantenedo i dati)
+## Come trasformare una tabella BigQuery non-partizionata in partizionata (mantenedo i dati) {#partition-table}
 
 Puoi creare una nuova tabella partizionata e clusterizzata sovrascrivendo quella esistente, utilizzando una tabella intermedia o eseguendo un'unica istruzione CREATE TABLE AS SELECT (CTAS) che è l'approccio più diretto ed efficiente.
 
