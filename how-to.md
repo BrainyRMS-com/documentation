@@ -69,14 +69,24 @@ Creare quello per aggiornare le statistiche delle property (vedi https://console
 
 A seconda del tipo di integrazione, è possibile che si renda necessario scaricare le prenotazioni ogni tot minuti; in questo caso andrà creato l'apposito Scheduled Job.
 
-### Nei file JS del progetto
+### Nei file JS del progetto `brainy-v2`
 - config.js
 - bigquery.js
 
-### Deploying delle CF
+### Deploying delle CF della repo `brainy-v2`
 ```shell
-firebase deploy --only functions:getPropertiesInfo,functions:updatebaseprices,functions:competitors,functions:importance,functions:irev1,functions:onresnotif
+firebase deploy --only functions:updatebaseprices,functions:irev1,functions:onresnotif
 ```
+
+### Aggiornamento delle altre CF/CR che fanno uso della libreria `common-js`
+
+Aggiornare la repository `common-js` con le informazioni del nuovo PMS (file `config.js` e `query.js`, molto simili 
+a quelli di brainy-v2 di cui sopra).
+
+Le CR `importance` e `getPropertiesInfo` vanno aggiornate tramite i loro rispettivi repository (prima, ovviamente,
+va installata la nuova versione del pacchetto `common-js`).
+
+
 
 ### Creazione delle collection di Firestore
 Se non è già stato fatto, ci pensano poi in automatico gli script.
