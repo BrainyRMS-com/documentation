@@ -132,6 +132,10 @@ Va aggiunta la query necessaria, copiandola dalle precedenti.
 Aggiungere al JSON contenuto la nuova mappatura:
 https://console.cloud.google.com/security/secret-manager/secret/brainy-pms-mapping/versions?inv=1&invt=Ab2TPw&project=brainy-v2
 
+### Aggiornare la webapp
+
+Bisogna aggiungere i riferimenti del nuovo PMS nel file `src/config.js`
+
 
 ## Come trasformare una tabella BigQuery non-partizionata in partizionata (mantenedo i dati)
 
