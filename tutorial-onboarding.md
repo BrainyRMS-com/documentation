@@ -43,13 +43,4 @@ La cosa non è affatto banale e si è proceduto come segue:
 
 ## Onboarding QUOVAI
 
-1. Recuperare tutti i dati dell'hotel.
-2. Effettuare la chiamata alla route `/onboarding` come da documentazione Swagger:
-https://quovai-27810994373.europe-west1.run.app/docs/#/Onboarding/post_onboarding.
-(Per praticità, ho predisposto una chiamata già impostata su Postman: https://brainy-rms.postman.co/workspace/BrainyRMS~d75071dc-1e6c-419d-aa40-d977b9add034/request/44179097-d176df14-4c17-42e8-ba99-2e505e6b1388?action=share&source=copy-link&creator=44179097)
-3. Attendere che tutti i task siano completati con successo.
-Per il momemnto non sono previste interfacce o altri sistemi intelligenti, per cui occorre andare a vedere su 
-https://v2.brainyrms.com/pmsdashboard/manageproperties accedendo come admin.
-NB: non bisogna interagire con il processo di onboarding, ma su quel pannello si può vedere l'avanzamento dello stato
-del Workflow "onboarding". Nella Queue specifica di quella property, invece, si può vedere l'avanzamento dei vari 
-processi prima della chiamata al WF "onboarding".
+———> https://www.notion.so/Onboarding-Quovai-26a2c0653e4f80a79fd4ef608ee3d2fa 
