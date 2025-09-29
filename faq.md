@@ -61,3 +61,18 @@ Eseguire lo script https://github.com/lucamarogna-brainy/aa_debug/blob/main/fire
 ### Cambiare la past season (aka `seasonSystem`)
 - Siccome vengono cambiati tutti i `base price`, è necessario inviare poi cliccare su `Settings -> Refresh Calculation`.
 
+
+### Come impostare automaticamente la proporzione tra le camere?
+
+Inviare un messaggio sul topic `roomTypesChanged` con un payload simile a questo:
+```json5
+{
+	attributes: {
+		pmsId: 13,
+			propertyId: 'OLY',
+			origin: 'calc-proportion',	// con questo calcolo solo la proporzione tra le camere!
+	}
+}
+```
+
+NB: c'è già uno script pronto per questo, che si trova qui: https://github.com/lucamarogna-brainy/aa_debug/blob/main/pubsub_roomTypesChanged.js.
