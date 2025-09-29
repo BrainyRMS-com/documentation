@@ -67,11 +67,11 @@ Eseguire lo script https://github.com/lucamarogna-brainy/aa_debug/blob/main/fire
 Inviare un messaggio sul topic `roomTypesChanged` con un payload simile a questo:
 ```json5
 {
-	attributes: {
-		pmsId: 13,
-			propertyId: 'OLY',
-			origin: 'calc-proportion',	// con questo calcolo solo la proporzione tra le camere!
-	}
+  attributes: {
+    pmsId: 13,
+    propertyId: 'OLY',
+	origin: 'calc-proportion',	// con questo calcolo solo la proporzione tra le camere!
+  }
 }
 ```
 
