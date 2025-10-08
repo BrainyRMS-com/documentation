@@ -1,0 +1,2419 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainy XML API Documentation v1.7.11</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px 60px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Header con logo */
+        .doc-header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 40px;
+        }
+        
+        .doc-header img {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .doc-header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin: 10px 0;
+            border: none;
+            padding: 0;
+        }
+        
+        .doc-header .version-info {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+        
+        .doc-header .version-info strong {
+            color: #3498db;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            font-size: 2.2em;
+        }
+        
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #95a5a6;
+            padding-bottom: 8px;
+            margin: 25px 0 15px 0;
+            font-size: 1.8em;
+        }
+        
+        h3 {
+            color: #7f8c8d;
+            margin: 20px 0 10px 0;
+            font-size: 1.4em;
+        }
+        
+        h4 {
+            color: #95a5a6;
+            margin: 15px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        p {
+            margin: 10px 0;
+            text-align: justify;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e74c3c;
+        }
+        
+        /* Stili per XML syntax highlighting */
+        pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        /* XML Syntax Highlighting */
+        .xml-tag {
+            color: #e06c75;
+        }
+        
+        .xml-attribute {
+            color: #d19a66;
+        }
+        
+        .xml-value {
+            color: #98c379;
+        }
+        
+        .xml-comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+        
+        .xml-declaration {
+            color: #c678dd;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        
+        table th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        table td {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+        }
+        
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        table tr:hover {
+            background: #f0f0f0;
+        }
+        
+        ul, ol {
+            margin: 10px 0 10px 30px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        strong, b {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #ecf0f1;
+            margin: 30px 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 15px 0;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .toc {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .toc h2 {
+            border: none;
+            margin-top: 0;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            
+            pre {
+                page-break-inside: avoid;
+            }
+            
+            table {
+                page-break-inside: avoid;
+            }
+            
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+        }
+        
+        @page {
+            margin: 2cm;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="doc-header">
+            <img src="logo.png" alt="Brainy Logo">
+            <h1>Brainy XML API Documentation</h1>
+            <div class="version-info">
+                <strong>Version:</strong> 1.7.11 | 
+                <strong>Published:</strong> 2025-10-07
+            </div>
+        </div>
+<hr />
+<h1 id="introduction">INTRODUCTION</h1>
+<h2 id="api-goal">API goal</h2>
+<p>The goal of these API XML is to give PMS/CRS the possibility to use
+PMS main functions inside their software.</p>
+<p>These functions are:</p>
+<ol type="1">
+<li><strong>Download reservations</strong>: PMS periodically retrieves
+new or modified reservations from the channels; retrieved reservations
+are then stored in a local database; API functions let Brainy retrieves
+these reservations.</li>
+<li><strong>Read PMS Inventory</strong>: the local inventory is where it
+is stored daily room’s data (availability, rate etc).</li>
+<li><strong>Update PMS Inventory and linked channels</strong>: when the
+local inventory is updated, updated data are then forwarded to the
+channels.</li>
+</ol>
+<hr />
+<h2 id="data-exchange-mechanism">Data exchange mechanism</h2>
+<p>Every call to the API is an HTTP POST to the address:</p>
+<p><strong>TEST ENVIRONMENT</strong></p>
+<pre><code>https://apitest.yourwebsite.com/be/search/xml.jsp</code></pre>
+<p><strong>PROD ENVIRONMENT</strong></p>
+<pre><code>https://api.yourwebsite.com/be/search/xml.jsp</code></pre>
+<p>The HTTP request headers must contains
+<code>ContentType = "text/xml"</code>.</p>
+<p>Every request is added to an internal QUEUE that is composed by a
+Waiting Queue and an Active Queue.</p>
+<p>For every property the Waiting queue accepts up to <code>N</code>
+requests: it means that an external software can send simultaneously up
+to <code>N</code> requests for the same property.</p>
+<p>For every property the Active queue accepts up to <code>M</code>
+requests of different type: it means that PMS can simultaneously
+elaborate, for the same property, up to <code>M</code> different
+requests queued in the Waiting Queue. As a consequence update requests
+are always elaborated one by one. PMS never processes an update request
+until the previous one is completed.</p>
+<p>Please set your values of <code>N</code> and <code>M</code> as large
+as possible.</p>
+<p>PMS accepts up to 15.000 availability rows per property every 30
+minutes. This limit can be temporarily changed if needed.</p>
+<hr />
+<h2 id="data-types">Data types</h2>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 19%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td></td>
+<td>Any alphanumeric value</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td></td>
+<td>Any integer number either positive or negative in decimal base
+representation</td>
+</tr>
+<tr>
+<td>Double</td>
+<td></td>
+<td>Any real number either positive or negative in decimal base
+representation</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>true / false</td>
+<td></td>
+</tr>
+<tr>
+<td>Date</td>
+<td>YYYY-MM-DD</td>
+<td></td>
+</tr>
+<tr>
+<td>DateTime</td>
+<td>YYYY-MM-DD hh:mm:ss</td>
+<td>TimeZone CET/CEST</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="request-message-structure-and-access-credentials">Request
+message structure and access credentials</h2>
+<p>Every call must be enclosed in a “Request” element that contains the
+access credentials</p>
+<p><strong>Request element</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Request</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="userName">@userName</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="password">@password</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="apikey">@apikey</span></td>
+<td>String</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Username and password for the API usage can be used to access the PMS
+extranet too.</p>
+<p>For security reasons, the access to the XML interface has a second
+level authorization control: the caller IP address must be in the PMS
+whitelist or the Request element must contain an authorized API KEY.</p>
+<p>The API KEY is also used to identify the system caller, that’s why we
+strongly suggest to adopt this second method.</p>
+<p>API KEY and whitelisted IPs must be set in agreement with Brainy.</p>
+<hr />
+<h2 id="response-message-structure">Response Message structure</h2>
+<p>Every response is enclosed in a Response element.</p>
+<p><strong>Response element</strong></p>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 7%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Response</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>subelement</strong></td>
+<td></td>
+<td>0 - n</td>
+<td>Subelements depend on the request type and are specified in the
+following chapters and paragraphs</td>
+</tr>
+</tbody>
+</table>
+<pre class="xml"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Response&gt;
+    &lt;hotel id=&quot;324&quot; description=&quot;Hotel Milano&quot; currency=&quot;EUR&quot;/&gt;
+    &lt;hotel id=&quot;456&quot; description=&quot;Hotel Roma&quot; currency=&quot;EUR&quot;/&gt;
+&lt;/Response&gt;</code></pre>
+<hr />
+<h2 id="error-message">Error Message</h2>
+<p>Error messages are returned as attribute of an error element.</p>
+<pre class="xml"><code>&lt;error message=&quot;Authentication Failed - Wrong Password&quot;/&gt;</code></pre>
+<h1 id="configuration-methods">Configuration methods</h1>
+<h2 id="gethotels">getHotels</h2>
+<p>This method return the list of all hotels associated to an
+username/password. For each listed hotel it provides an ID and a
+description. ID must be used to identify the hotel in all other
+messages.</p>
+<p><strong>Request elements</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>getHotels</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response elements</strong></p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 23%" />
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>hotel</strong></td>
+<td></td>
+<td>0 - n</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="id">@id</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Unique identifier of the hotel</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="description">@description</span></td>
+<td>String</td>
+<td>Y</td>
+<td>hotel name/ description</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="currency">@currency</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Currency selected for the property</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex:</strong></p>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot; apikey=&quot;MyApikey&quot;&gt;
+    &lt;getHotels/&gt;
+&lt;/Request&gt;</code></pre>
+<pre class="xml"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Response&gt;
+    &lt;hotel id=&quot;324&quot; description=&quot;Hotel Milano&quot; currency=&quot;EUR&quot;/&gt;
+    &lt;hotel id=&quot;456&quot; description=&quot;Hotel Roma&quot; currency=&quot;EUR&quot;/&gt;
+&lt;/Response&gt;</code></pre>
+<hr />
+<h2 id="getrates">getRates</h2>
+<p>It gives the list of rates for a selected hotel. Each element is
+characterized by two attributes, rateId and description both
+required.</p>
+<p><strong>Request elements</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>getRates</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="hotelId">@hotelId</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response elements</strong></p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 23%" />
+<col style="width: 10%" />
+<col style="width: 13%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>rate</strong></td>
+<td></td>
+<td>0 - n</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="rateId">@rateId</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Unique identifier of the rateplan</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="description">@description</span></td>
+<td>String</td>
+<td>Y</td>
+<td>rateplan name/ description</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex:</strong></p>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot; apikey=&quot;MyApikey&quot;&gt;
+    &lt;getRates hotelId=&quot;324&quot;/&gt;
+&lt;/Request&gt;</code></pre>
+<pre class="xml"><code>&lt;Response&gt;
+    &lt;rate rateId=&quot;934&quot; description=&quot;std&quot; /&gt;
+    &lt;rate rateId=&quot;1452&quot; description=&quot;pkg&quot; /&gt;
+&lt;/Response&gt;</code></pre>
+<hr />
+<h2 id="getrooms">getRooms</h2>
+<p>It gives the list of rooms for a selected hotel.</p>
+<p>Each room is represented by a room element.</p>
+<p><strong>Request elements</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>getRooms</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="hotelId">@hotelId</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response elements</strong></p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 17%" />
+<col style="width: 8%" />
+<col style="width: 10%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>room</strong></td>
+<td></td>
+<td>0 - n</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="id">@id</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Unique identifier of the roomtype</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="quantity">@quantity</span></td>
+<td>Integer</td>
+<td>Y</td>
+<td>How many rooms of this type are there in the selected hotel</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="description">@description</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Roomtype name or description</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="baseOccupancy">@baseOccupancy</span></td>
+<td>Integer</td>
+<td></td>
+<td>Roomtype base occupancy</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="parentRoomId">@parentRoomId</span></td>
+<td>String</td>
+<td></td>
+<td>Roomtype parent ID</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="virtual">@virtual</span></td>
+<td>Boolean</td>
+<td>Y</td>
+<td>Whether this room is virtual or not</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>rate</strong></td>
+<td></td>
+<td>0 - n</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="rateId">@rateId</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex:</strong></p>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot; apikey=&quot;MyApikey&quot;&gt;
+    &lt;getRooms hotelId=&quot;324&quot;/&gt;
+&lt;/Request&gt;
+
+&lt;Response&gt;
+    &lt;room id=&quot;2092&quot; quantity=&quot;4&quot; description=&quot;Standard double room&quot; baseOccupancy=&quot;2&quot;&gt;
+        &lt;rate rateId=&quot;934&quot; /&gt;
+        &lt;rate rateId=&quot;1452&quot; /&gt;
+    &lt;/room&gt;
+    &lt;room id=&quot;2093&quot; quantity=&quot;1&quot; description=&quot;Themed double room&quot; parentRoomId=&quot;2092&quot;&gt;
+        &lt;rate rateId=&quot;934&quot; /&gt;
+        &lt;rate rateId=&quot;1452&quot; /&gt;
+    &lt;/room&gt;
+    &lt;room id=&quot;3384&quot; virtual=&quot;true&quot; description=&quot;Overbookings&quot; quantity=&quot;1&quot;&gt;
+        &lt;rate rateId=&quot;934&quot; /&gt;
+    &lt;/room&gt;
+&lt;/Response&gt;</code></pre>
+<hr />
+<h1 id="reservations">Reservations</h1>
+<h2 id="reservations-retrieval">Reservations retrieval</h2>
+<p>The <strong>reservations</strong> function let the client retrieve
+reservations from the PMS local database.</p>
+<p><strong>Request elements</strong></p>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 15%" />
+<col style="width: 7%" />
+<col style="width: 9%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>reservations</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="hotelId">@hotelId</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="unconfirmed">@unconfirmed</span></td>
+<td>Boolean</td>
+<td>N</td>
+<td>if value=“true” all the other search criteria attributes are
+ignored.</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="useDLM">@useDLM</span></td>
+<td>Boolean</td>
+<td>N</td>
+<td>Search criteria<br>true = last modification date<br>false = checkin
+date</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="startDate">@startDate</span></td>
+<td>Date</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="endDate">@endDate</span></td>
+<td>Date</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Different combinations of attributes correspond to different search
+criteria:</p>
+<p><strong>Ex:</strong></p>
+<p><strong>1. To retrieve all unconfirmed reservations from all portals
+use:</strong></p>
+<ul>
+<li>unconfirmed = “true”</li>
+<li>omit useDLM</li>
+<li>omit startDate</li>
+<li>omit endDate</li>
+</ul>
+<p>The first time this method is used, all reservations are returned.
+Instead, all reservations are returned since the last call.</p>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot; apikey=&quot;MyApikey&quot;&gt;
+    &lt;reservations hotelId=&quot;3284&quot; unconfirmed=&quot;true&quot; /&gt;
+&lt;/Request&gt;</code></pre>
+<p><strong>2. To retrieve all the reservations from all portals, created
+or modified after the last reservations call use:</strong></p>
+<ul>
+<li>useDLM = “true”</li>
+<li>omit startDate</li>
+<li>omit endDate</li>
+</ul>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot; apikey=&quot;MyApikey&quot;&gt;
+    &lt;reservations hotelId=&quot;3284&quot; useDLM=&quot;true&quot; /&gt;
+&lt;/Request&gt;</code></pre>
+<p><strong>3. To retrieve all the reservations created or modified
+between two dates use:</strong></p>
+<ul>
+<li>useDLM = “true”</li>
+<li>startDate = “YYYY-MM-DD”</li>
+<li>endDate= “YYYY-MM-DD”</li>
+</ul>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot; apikey=&quot;MyApikey&quot;&gt;
+    &lt;reservations hotelId=&quot;3284&quot; useDLM=&quot;true&quot; startDate=&quot;2023-08-10&quot; endDate=&quot;2023-08-12&quot; /&gt;
+&lt;/Request&gt;</code></pre>
+<p><strong>4. To retrieve all the reservations with check-in date
+between two dates use:</strong></p>
+<ul>
+<li>useDLM = “false”</li>
+<li>startDate = “YYYY-MM-DD”</li>
+<li>endDate= “YYYY-MM-DD”</li>
+</ul>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot; apikey=&quot;MyApikey&quot;&gt;
+    &lt;reservations hotelId=&quot;3284&quot; useDLM=&quot;false&quot; startDate=&quot;2023-08-10&quot; endDate=&quot;2023-08-12&quot; /&gt;
+&lt;/Request&gt;</code></pre>
+<p>Returned information are a list on reservation elements.</p>
+<hr />
+<h2 id="reservations-notification-push">Reservations Notification
+Push</h2>
+<p>The process consists of 2 parts.</p>
+<p>The first part is the notification. The second is the request to PMS
+generated by Brainy to retrieve the details of the reservation.</p>
+<p><strong>Notification PUSH</strong></p>
+<p>Whenever a reservation is created or modified, PMS puts it in a
+notification queue.</p>
+<p>A process checks the queue every 10 seconds and then notifies Brainy
+through a HTTP GET call to an endpoint provided by Brainy itself.</p>
+<p>The request contains 2 parameters, the <code>id</code> and
+<code>hotelId</code> that are passed in the querystring in the following
+format</p>
+<pre><code>https://&lt;brainy_push_url&gt;?id=xxxxx&amp;hotelId=yyyyy</code></pre>
+<p>The <code>id</code> parameter is the identification code of the
+reservation in the PMS.</p>
+<p>The <code>hotelId</code> parameter is the hotel code in PMS.</p>
+<p><strong>Ex:</strong></p>
+<pre><code>HTTP GET https://&lt;brainy_push_url&gt;?id=12345&amp;hotelId=5463</code></pre>
+<p>Brainy must reply with statusCode 200 to aknowledge the receipt of
+the notification. Any other statusCode will mean that the notification
+is unsuccessful.</p>
+<p>In such a case PMS will suspend the sending of further notifications
+for the selected hotel for a period of 5 minutes.</p>
+<p>After this time frame, PMS will try again to send the booking
+notification.</p>
+<p>This mechanism will repeat until Brainy responds with a 200
+statusCode. Only at that time the lock on the hotel will be removed.</p>
+<p>Generally speaking PMS removes a reservation from the notification
+queue if:</p>
+<ol type="1">
+<li>it receives a 200 statusCode</li>
+<li>Brainy downloads the reservation through any of the calls described
+in the previous paragraph</li>
+</ol>
+<p><strong>Reservation retrieval</strong></p>
+<p>The second part originates on the PMS side.</p>
+<p>When Brainy receives the notification, it must send a “reservation”
+request to retrieve all the reservation data.</p>
+<p><strong>Request elements</strong></p>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 16%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>reservation</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="hotelId">@hotelId</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="id">@id</span></td>
+<td>String</td>
+<td>Y</td>
+<td>PMS unique identifier of a reservation notified through the HTTP
+GET</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex:</strong></p>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot; apikey=&quot;MyApikey&quot;&gt;
+    &lt;reservation hotelId=&quot;3284&quot; id=&quot;3257318&quot; /&gt;
+&lt;/Request&gt;</code></pre>
+<p>The response contains only one reservation element as described in
+the following paragraph.</p>
+<p>Whenever Brainy retrieves a notified reservation we strongly suggest
+to send a <strong>reservationConfirm</strong>. This way it can
+periodically send “reservations” requests with unconfirmed=“true” as a
+fallback mechanism.</p>
+<hr />
+<h2 id="reservations-response-messages">Reservations response
+messages</h2>
+<p>Reservations response messages contain a list of reservation
+elements.</p>
+<p>The reservation element has a very complex structure and many of the
+attributes and subelements are not mandatory but portal-dependent.</p>
+<p><strong>Reservation element structure</strong></p>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 15%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>reservation</strong></td>
+<td></td>
+<td>0 - n</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="id">@id</span></td>
+<td>String</td>
+<td>Y</td>
+<td>PMS Reservation unique identifier</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="portalId">@portalId</span></td>
+<td>String</td>
+<td>Y</td>
+<td>PMS Portal identifier</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="status">@status</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Reservation status<br>The list of possible values is reported
+below</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="hotelId">@hotelId</span></td>
+<td>String</td>
+<td>Y</td>
+<td>PMS Hotel Id</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="dlm">@dlm</span></td>
+<td>DateTime</td>
+<td>Y</td>
+<td>PMS last retrieval date and time</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="checkin">@checkin</span></td>
+<td>Date</td>
+<td>Y</td>
+<td>If the resravtion is for multiple roomstays with different checkin
+date the first one is taken</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="checkout">@checkout</span></td>
+<td>Date</td>
+<td>Y</td>
+<td>If the resravtion is for multiple roomstays with different checkout
+date the last one is taken</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="creation_date">@creation_date</span></td>
+<td>DateTime</td>
+<td>Y</td>
+<td>Creation date and time</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="cancellation_date">@cancellation_date</span></td>
+<td>DateTime</td>
+<td>N</td>
+<td>Cancellation date and time</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="firstName">@firstName</span></td>
+<td>String</td>
+<td>N</td>
+<td>The first name of the customer that has completed this
+reservation</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="lastName">@lastName</span></td>
+<td>String</td>
+<td>N</td>
+<td>The last name of the customer that has completed this
+reservation</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="address">@address</span></td>
+<td>String</td>
+<td>N</td>
+<td>Customer address</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="city">@city</span></td>
+<td>String</td>
+<td>N</td>
+<td>Customer city</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="zipCode">@zipCode</span></td>
+<td>String</td>
+<td>N</td>
+<td>Customer Zip Code</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="country">@country</span></td>
+<td>String</td>
+<td>N</td>
+<td>ISO Alpha-2 country code</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="lang">@lang</span></td>
+<td>String</td>
+<td>N</td>
+<td>Language used by the customer or set as preferred language during
+the booking</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="rooms">@rooms</span></td>
+<td>Integer</td>
+<td>N</td>
+<td>Total number of booked rooms</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="persons">@persons</span></td>
+<td>Integer</td>
+<td>N</td>
+<td>Total number of hosted adults</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="children">@children</span></td>
+<td>Integer</td>
+<td>N</td>
+<td>Total number of hosted children</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="price">@price</span></td>
+<td>Double</td>
+<td>N</td>
+<td>Total reservation amount</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="commission">@commission</span></td>
+<td>Double</td>
+<td>N</td>
+<td>Reservation commission amount</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="currencycode">@currencycode</span></td>
+<td>String</td>
+<td>N</td>
+<td>ISO 4217 Currency Code</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="paymentType">@paymentType</span></td>
+<td>String</td>
+<td>N</td>
+<td>The list of available payment types is reported below</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="shop">@shop</span></td>
+<td>Integer</td>
+<td>N</td>
+<td>Identifies the booking source when the booking is made through the
+PMS BookingEngine<br>The list of possible values is reported below</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="source_of_business">@source_of_business</span></td>
+<td>String</td>
+<td>N</td>
+<td>Source of business. It can be a Tour Operator, a Travel Agent or a
+Partenr WebSite of the channel</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Company</strong></td>
+<td></td>
+<td>0 - 1</td>
+<td>Information’s about the Company that made the reservation</td>
+</tr>
+<tr>
+<td></td>
+<td>CompanyId</td>
+<td>String</td>
+<td>N</td>
+<td>Company Identifier in the Channel Environment</td>
+</tr>
+<tr>
+<td></td>
+<td>CompanyVat</td>
+<td>String</td>
+<td>N</td>
+<td>VAT Number</td>
+</tr>
+<tr>
+<td></td>
+<td>CompanyName</td>
+<td>String</td>
+<td>Y</td>
+<td>Company Name</td>
+</tr>
+<tr>
+<td></td>
+<td>CompanyAddress</td>
+<td>String</td>
+<td>N</td>
+<td>Address</td>
+</tr>
+<tr>
+<td></td>
+<td>CompanyCity</td>
+<td>String</td>
+<td>N</td>
+<td>City</td>
+</tr>
+<tr>
+<td></td>
+<td>CompanyCountry</td>
+<td>String</td>
+<td>N</td>
+<td>Country</td>
+</tr>
+<tr>
+<td></td>
+<td>CompanyPostalcode</td>
+<td>String</td>
+<td>N</td>
+<td>Postal code</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>room</strong></td>
+<td></td>
+<td>0 - n</td>
+<td>Contains details for every room stay</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="id">@id</span></td>
+<td>String</td>
+<td>Y</td>
+<td>PMS room type ID</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="quantity">@quantity</span></td>
+<td>Integer</td>
+<td>Y</td>
+<td>Number of reserved rooms for the current room stay</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="description">@description</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Room name</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="portalRoomDescription">@portalRoomDescription</span></td>
+<td>String</td>
+<td>N</td>
+<td>Name of the room on the channel</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="checkin">@checkin</span></td>
+<td>Date</td>
+<td>N</td>
+<td>Check-in date for this room stay, can be different from the
+reservation checkin</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="checkout">@checkout</span></td>
+<td>Date</td>
+<td>N</td>
+<td>The check-out date for this room, can be different from the
+reservation checkout</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="rateId">@rateId</span></td>
+<td>String</td>
+<td>N</td>
+<td>PMS rate plan code applied to this room stay</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="rateDescription">@rateDescription</span></td>
+<td>String</td>
+<td>N</td>
+<td>Rate plan description</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="portalRateDescription">@portalRateDescription</span></td>
+<td>String</td>
+<td>N</td>
+<td>Channel rate plan description</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="currency">@currency</span></td>
+<td>String</td>
+<td>N</td>
+<td>ISO 4217 Currency Code</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="price">@price</span></td>
+<td>Double</td>
+<td>N</td>
+<td>Room stay total base amount (don not include discounts and
+supplements)</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="totalPrice">@totalPrice</span></td>
+<td>Double</td>
+<td>N</td>
+<td>Room stay total amount (total base amount +supplements-offers)</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="adults">@adults</span></td>
+<td>Integer</td>
+<td>N</td>
+<td>Number of adults in this room stay</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="children">@children</span></td>
+<td>Integer</td>
+<td>N</td>
+<td>Number of children in this room stay</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="commission">@commission</span></td>
+<td>Double</td>
+<td>N</td>
+<td>Commission amount applied by the channel for the current room
+stay</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="cancellation_policy">@cancellation_policy</span></td>
+<td>String</td>
+<td>N</td>
+<td>Description of the cancellation policy</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="status">@status</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Room status (book, modified, cancelled etc)<br>The list of possible
+values is reported below</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>childAge</strong></td>
+<td>String</td>
+<td>0 - n</td>
+<td>It’s a subelement of room element and it is used to report the age
+the children</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="age">@age</span></td>
+<td>Integer</td>
+<td>Y</td>
+<td>Age of the nth child in the room stay</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>dayPrice</strong></td>
+<td></td>
+<td>0 - n</td>
+<td>Subelement used to specify the room stay daily base amount</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="day">@day</span></td>
+<td>Date</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="price">@price</span></td>
+<td>Double</td>
+<td>Y</td>
+<td>Daily total base amount</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="roomId">@roomId</span></td>
+<td>String</td>
+<td>N</td>
+<td>Always the same value as in the father room stay<br>Maintained only
+for back compatibility</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="rateId">@rateId</span></td>
+<td>String</td>
+<td>N</td>
+<td>When the channel uses the mixed rates model, the rate plan ID can be
+different respect to the father room stay rateId</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>supplement</strong></td>
+<td></td>
+<td>0 - n</td>
+<td>Supplements or fees infos</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="description">@description</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="supplementId">@supplementId</span></td>
+<td>String</td>
+<td>N</td>
+<td>Supplement identifier (should be ENUMed by PMS)</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="price">@price</span></td>
+<td>Double</td>
+<td>Y</td>
+<td>Total amount</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="number">@number</span></td>
+<td>Integer</td>
+<td>Y</td>
+<td>Quantity of this service bought by the client (=0 if it cannot be
+quantified)</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="type">@type</span></td>
+<td>Integer</td>
+<td>Y</td>
+<td>0=daily, 1=per person, 2=by number, 3=per person per night, 4=by
+number per night</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>guest</strong></td>
+<td></td>
+<td>0 - n</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="firstName">@firstName</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="secondName">@secondName</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="country">@country</span></td>
+<td>String</td>
+<td>N</td>
+<td>ISO Alpha-2 country code</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>tax</strong></td>
+<td></td>
+<td>0 – n</td>
+<td>When one or more tax elements are present the reservation amount is
+the sum of the room prices + the tax amounts</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="amount">@amount</span></td>
+<td>Double</td>
+<td>Y</td>
+<td>Tax amount</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="description">@description</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Tax description</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Reservation and Room Status table</strong></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>SUBMITTED (not yet confirmed)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CONFIRMED</td>
+</tr>
+<tr>
+<td>5</td>
+<td>REJECTED</td>
+</tr>
+<tr>
+<td>6</td>
+<td>NO SHOW</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DELETED/CANCELLED</td>
+</tr>
+<tr>
+<td>8</td>
+<td>MODIFIED</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Payment type List</strong></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>transfer</td>
+</tr>
+<tr>
+<td>2</td>
+<td>postal_order</td>
+</tr>
+<tr>
+<td>3</td>
+<td>paypal</td>
+</tr>
+<tr>
+<td>4</td>
+<td>credit_card</td>
+</tr>
+<tr>
+<td>5</td>
+<td>cash</td>
+</tr>
+<tr>
+<td>6</td>
+<td>mercadopago</td>
+</tr>
+<tr>
+<td>7</td>
+<td>stripe</td>
+</tr>
+<tr>
+<td>8</td>
+<td>etrans</td>
+</tr>
+<tr>
+<td>9</td>
+<td>mobipaid</td>
+</tr>
+<tr>
+<td>10</td>
+<td>payway</td>
+</tr>
+<tr>
+<td>11</td>
+<td>redsys</td>
+</tr>
+<tr>
+<td>12</td>
+<td>satispay</td>
+</tr>
+<tr>
+<td>13</td>
+<td>payu</td>
+</tr>
+<tr>
+<td>14</td>
+<td>payulatam</td>
+</tr>
+<tr>
+<td>15</td>
+<td>clicpay</td>
+</tr>
+<tr>
+<td>16</td>
+<td>realex</td>
+</tr>
+<tr>
+<td>17</td>
+<td>paycomet</td>
+</tr>
+<tr>
+<td>18</td>
+<td>payzen</td>
+</tr>
+<tr>
+<td>20</td>
+<td>comerciaglobalpayments</td>
+</tr>
+<tr>
+<td>21</td>
+<td>ogone</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Voucher</td>
+</tr>
+<tr>
+<td>23</td>
+<td>nexi</td>
+</tr>
+<tr>
+<td>24</td>
+<td>sogecommerce</td>
+</tr>
+<tr>
+<td>27</td>
+<td>bizum</td>
+</tr>
+<tr>
+<td>28</td>
+<td>epayco</td>
+</tr>
+<tr>
+<td>29</td>
+<td>syspay</td>
+</tr>
+<tr>
+<td>30</td>
+<td>cecabank</td>
+</tr>
+<tr>
+<td>31</td>
+<td>bccpayway</td>
+</tr>
+<tr>
+<td>32</td>
+<td>K&amp;H PG</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Shop List</strong></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>PMS Booking Engine</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Facebook</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Tripadvisor</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Google</td>
+</tr>
+<tr>
+<td>8</td>
+<td>MyHotelShop</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Trivago Fastconnect</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Le bon Coin (Pilgo)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Small Hotels Argentina</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Trivago Express Booking</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Calafate Travel</td>
+</tr>
+<tr>
+<td>18</td>
+<td>PMS CRS</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Google FBL</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Trivago CPA</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>REMARK:</strong> PMS tries to decode the room present in a
+reservation retrieved from a channel, with one of those defined in PMS
+(room mapping). If it occurs, as usual, the roomId returned in the
+reservation message is the PMS room identification code (i.e. one of
+those you retrieve with the getRooms message).</p>
+<hr />
+<p><strong>Reservation example</strong></p>
+<pre class="xml"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Response&gt;
+&lt;reservation id=&quot;91138035&quot; hotelId=&quot;4086&quot; portalId=&quot;63&quot; checkin=&quot;2023-10-03&quot; checkout=&quot;2023-10-05&quot; firstName=&quot;Giulio&quot; lastName=&quot;Cesare&quot; rooms=&quot;2&quot; adults=&quot;6&quot; children=&quot;1&quot; persons=&quot;7&quot; city=&quot;Roma&quot; country=&quot;IT&quot; lang=&quot;en&quot; address=&quot;Fori Imperiali&quot; zipCode=&quot;00187&quot; price=&quot;508.0&quot; commission=&quot;0.0&quot; status=&quot;4&quot; currencycode=&quot;EUR&quot; paymentType=&quot;4&quot; offer=&quot;&quot; creation_date=&quot;2023-08-17 09:41:33&quot; dlm=&quot;2023-08-17 09:41:33&quot; source_of_business=&quot;&quot;&gt;
+    &lt;Company CompanyId=&quot;4087&quot; CompanyVat=&quot;08048050150&quot; CompanyName=&quot;Tecnes Milano&quot; CompanyAddress=&quot;Milano&quot; CompanyCountry=&quot;IT&quot; CompanyPostalcode=&quot;20137&quot;/&gt;
+    &lt;room id=&quot;41699&quot; description=&quot;Family&quot; portalRoomDescription=&quot;Family&quot; checkin=&quot;2023-10-03&quot; checkout=&quot;2023-10-05&quot; rateId=&quot;26505&quot; rateDescription=&quot;&quot; portalRateDescription=&quot;BB NR - Breakfast included&quot; quantity=&quot;1&quot; currency=&quot;EUR&quot; price=&quot;240.0&quot; totalPrice=&quot;236.0&quot; adults=&quot;4&quot; children=&quot;0&quot; commission=&quot;0.0&quot; status=&quot;4&quot; cancellation_policy=&quot;If cancelled or in case of no-show, the guest will be charged &amp;lt;b&amp;gt;the total price&amp;lt;/b&amp;gt; .&quot;&gt;
+        &lt;supplement supplementId=&quot;7271&quot; description=&quot;parking&quot; price=&quot;20.0&quot; type=&quot;0&quot; number=&quot;1&quot; /&gt;
+        &lt;offer offerId=&quot;23911&quot; description=&quot;Corporate Offer&quot; amount_after_tax=&quot;-24.0&quot;/&gt;
+    &lt;/room&gt;
+    &lt;dayPrice day=&quot;2023-10-03&quot; roomId=&quot;41699&quot; price=&quot;120.0&quot;/&gt;
+    &lt;dayPrice day=&quot;2023-10-04&quot; roomId=&quot;41699&quot; price=&quot;120.0&quot;/&gt;
+    &lt;room id=&quot;20022&quot; description=&quot;Classic DBL&quot; portalRoomDescription=&quot;Classic DBL&quot; checkin=&quot;2023-10-03&quot; checkout=&quot;2023-10-05&quot; rateId=&quot;13086&quot; rateDescription=&quot;&quot; portalRateDescription=&quot;BB - Breakfast included&quot; quantity=&quot;1&quot; currency=&quot;EUR&quot; price=&quot;280.0&quot; totalPrice=&quot;272.0&quot; adults=&quot;2&quot; children=&quot;1&quot; commission=&quot;0.0&quot; status=&quot;4&quot; cancellation_policy=&quot;&amp;lt;p&amp;gt;The guest can cancel free of charge &amp;lt;b&amp;gt;until the day of arrival&amp;lt;/b&amp;gt;.&amp;lt;/p&amp;gt;&quot;&gt;
+        &lt;supplement supplementId=&quot;7271&quot; description=&quot;parking&quot; price=&quot;20.0&quot; type=&quot;0&quot; number=&quot;1&quot; /&gt;
+        &lt;offer offerId=&quot;23911&quot; description=&quot;Corporate Offer&quot; amount_after_tax=&quot;-28.0&quot;/&gt;
+    &lt;/room&gt;
+    &lt;childAge age=&quot;3&quot;/&gt;
+    &lt;dayPrice day=&quot;2023-10-03&quot; roomId=&quot;20022&quot; price=&quot;140.0&quot;/&gt;
+    &lt;dayPrice day=&quot;2023-10-04&quot; roomId=&quot;20022&quot; price=&quot;140.0&quot;/&gt;
+    &lt;guest firstName=&quot;Cleopatra&quot; secondName=&quot;Regina&quot; /&gt;
+&lt;/reservation&gt;
+&lt;/Response&gt;</code></pre>
+<hr />
+<h2 id="reservation-confirm">Reservation Confirm</h2>
+<p>This function allows PMS to have the confirmation from Brainy that
+the reservation has been downloaded. Without this, the reservation will
+be returned as unconfirmed in reservation request.</p>
+<p><strong>Request elements</strong></p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 29%" />
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>reservationConfirm</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="hotelId">@hotelId</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="id">@id</span></td>
+<td>String</td>
+<td>Y</td>
+<td>PMS reservation internal code</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="confirmationId">@confirmationId</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Brainy confirmation ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex:</strong></p>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot; apikey=&quot;MyApikey&quot;&gt;
+    &lt;reservationConfirm hotelId=&quot;5854&quot; id=&quot;62395874&quot; confirmationId=&quot;1234&quot;/&gt;
+&lt;/Request&gt;
+
+&lt;Response&gt;
+    &lt;ok/&gt;
+&lt;/Response&gt;</code></pre>
+<p>From now on the reservation with id=“62395874” will not be returned
+unless you click on the “ON/OFF” button</p>
+<hr />
+<h1 id="read-and-update-inventory">Read and Update Inventory</h1>
+<h2 id="the-pms-inventory">The PMS Inventory</h2>
+<p>The PMS Inventory is a calendar of room availabilities and rates
+stored on the local PMS database.</p>
+<p>For each room type and each day it is possible to define rate-based
+prices.</p>
+<p>Every time the calendar of a room type and linked rate types are
+updated, the mapped “room types / rate plans” calendars on the channels
+are updated as well.</p>
+<p>Brainy XML API provides two methods to respectively read and update
+inventory data. These two method are:</p>
+<ol type="1">
+<li><strong>view</strong> : get inventory data</li>
+<li><strong>modify</strong> : update inventory data</li>
+</ol>
+<p>Structure and the usage of these two so important methods are showed
+in the next paragraphs.</p>
+<hr />
+<h2 id="business-rules">Business Rules</h2>
+<p>Hotels can define one or more business rules to set up Derived
+Products (Room Rules) or rules to recalculate the data to send to a
+portal room and rate (Portals Rule).</p>
+<p>With a Room Rule it is possible to link a room/rate to another
+room/rate, i.e. it is possible to calculate the availability, and/or the
+rate and/or the min stay of a room/rate combination starting from a
+“linked” room/rate combination.</p>
+<p>Through a set of Room Rules it is possible to derivate all room/rates
+combinations from a base room/rate.</p>
+<p>By default the ratio between the PMS inventory and the mapped
+rooms/rates channels is 1 to 1.</p>
+<p>For instance, if we put in the PMS inventory 100,00€ on the Single
+Room and Standared Rate, 100,00€ will be then sent to booking.com for
+the Double - Standard Rate Plan, to Expedia for the Standard room -
+Standard rate Plan and so on.</p>
+<hr />
+<h2 id="availability-element">Availability element</h2>
+<p>Availability element represents the basic block of information for a
+defined room on a defined day. The Inventory is a collection of
+availability objects.</p>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 10%" />
+<col style="width: 4%" />
+<col style="width: 5%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>availability</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="roomId">@roomId</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Room type ID</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="day">@day</span></td>
+<td>Date</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="quantity">@quantity</span></td>
+<td>Integer</td>
+<td>N</td>
+<td>Number of available rooms</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>rate</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="rateId">@rateId</span></td>
+<td>String</td>
+<td>Y</td>
+<td>Rate plan ID</td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="price">@price</span></td>
+<td>Double</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="minimumStay">@minimumStay</span></td>
+<td>Integer</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation"
+data-cites="maximumStay">@maximumStay</span></td>
+<td>Integer</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="view-request">View Request</h2>
+<p>View request is used to retrieve the inventory of a property in a
+calendar interval between two dates.</p>
+<p><strong>Request elements</strong></p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>view</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="hotelId">@hotelId</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="startDate">@startDate</span></td>
+<td>Date</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="endDate">@endDate</span></td>
+<td>Date</td>
+<td>Y</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The response to a view call is a list of availability elements</p>
+<p><strong>Ex:</strong></p>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot;&gt;
+    &lt;view hotelId=&quot;1111&quot; startDate=&quot;2024-10-12&quot; endDate=&quot;2024-10-12&quot; /&gt;
+&lt;/Request&gt;
+
+&lt;Response&gt;
+    &lt;availability day=&quot;2024-10-12&quot; roomId=&quot;2091&quot; quantity=&quot;5&quot; &gt;
+        &lt;rate rateId=&quot;7420&quot; price=&quot;80.0&quot; minimumStay=&quot;1&quot; maximumStay=&quot;100&quot; /&gt;
+        &lt;rate rateId=&quot;7420&quot; price=&quot;70.0&quot; minimumStay=&quot;1&quot; maximumStay=&quot;7&quot; /&gt;
+    &lt;/availability&gt;
+&lt;/Response&gt;</code></pre>
+<hr />
+<h2 id="modify-request">Modify Request</h2>
+<p>Modify request is used to send updates to the inventory of a property
+in a calendar interval between two dates.</p>
+<p><strong>Request elements</strong></p>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 6%" />
+<col style="width: 2%" />
+<col style="width: 3%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Element/attribute</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>modify</strong></td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="hotelId">@hotelId</span></td>
+<td>String</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="startDate">@startDate</span></td>
+<td>Date</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><span class="citation" data-cites="endDate">@endDate</span></td>
+<td>Date</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>availability</strong></td>
+<td></td>
+<td>1 - n</td>
+<td>Array of Availability elements (see above paragraph)<br>The
+attribute day of any availability element must be between the startDate
+and endDate specified in the modify element<br>A request cannot contain
+more than one availability element with same roomId and day</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex:</strong></p>
+<pre class="xml"><code>&lt;Request userName=&quot;MyLogin&quot; password=&quot;MyPassword&quot;&gt;
+    &lt;modify hotelId=&quot;1111&quot; startDate=&quot;2024-10-12&quot; endDate=&quot;2024-10-14&quot; &gt;
+        &lt;availability day=&quot;2024-10-12&quot; roomId=&quot;1&quot; quantity=&quot;5&quot;&gt;
+            &lt;rate rateId=&quot;2782&quot; price=&quot;50.0&quot; minimumStay=&quot;1&quot; /&gt;
+            &lt;rate rateId=&quot;7421&quot; price=&quot;70.0&quot; minimumStay=&quot;1&quot; /&gt;
+        &lt;/availability&gt;
+        &lt;availability day=&quot;2024-10-14&quot; roomId=&quot;1&quot;&gt;
+            &lt;rate rateId=&quot;7421&quot; price=&quot;70.0&quot; /&gt;
+        &lt;/availability&gt;
+    &lt;/modify&gt;
+&lt;/Request&gt;</code></pre>
+<p>A modify message cannot contain more than one availability element
+having same roomId and same day.</p>
+<p>The availability subelements are optional.</p>
+<p>An availability element cannot contain more than one rate sub element
+having same rateId.</p>
+<p>The result of a <strong>Modify</strong> call can be:</p>
+<ol type="a">
+<li><p><strong>completely wrong</strong>: an error has occurred during
+the Inventory update procedure; no data has been saved and forwarded to
+any channel.</p></li>
+<li><p><strong>partially successful</strong>: Inventory has been
+successfully updated, but an error has occurred while sending data to
+one or more channel.</p></li>
+<li><p><strong>completely successful</strong>: Inventory and channels
+have been successfully updated.</p></li>
+</ol>
+<p>In the first and second case an error element will be returned as
+child of the Response element.</p>
+<p><strong>Ex a):</strong></p>
+<pre class="xml"><code>&lt;Response&gt;
+    &lt;error message=&quot;Problem have been encountered in the modification of the inventory&quot;/&gt;
+&lt;/Response&gt;</code></pre>
+<p>In this case the error element contains the list of portals with
+update errors.</p>
+<p><strong>Ex b):</strong></p>
+<pre class="xml"><code>&lt;Response&gt;
+    &lt;error message=&quot;Problem on portals update&quot;&gt;
+        &lt;portal id=&quot;124&quot; message=&quot;Login Failed&quot; code=&quot;2101&quot;&gt;
+        &lt;/portal&gt;
+        &lt;portal id=&quot;3&quot; message=&quot;error on update of room single&quot; code=&quot;2301&quot;&gt;
+        &lt;/portal&gt;
+        ...
+    &lt;/error&gt;
+&lt;/Response&gt;</code></pre>
+<p><strong>Ex c):</strong></p>
+<pre class="xml"><code>&lt;Response&gt;
+    &lt;ok/&gt;
+&lt;/Response&gt;</code></pre>
+<p>When the request contains one or more wrong roomId and or rateId, PMS
+discards the corresponding elements and it raises a warning message</p>
+<pre class="xml"><code>&lt;Response&gt;
+    &lt;ok/&gt;
+    &lt;warnings&gt;
+        &lt;warning message=&quot;roomId 58234 not found for hotelId 4018&quot; /&gt;
+    &lt;/warnings&gt;
+&lt;/Response&gt;</code></pre>
+<hr />
+<p><strong>REMARKS</strong></p>
+<p><strong>Update process speed</strong></p>
+<p>When you send a modify request, PMS updates the inventory and
+immediately forwards data to the channels. The process can take up to 10
+minutes or more, depending on several factor like how many channels the
+hotel is connected to, the number of rooms to update etc.</p>
+<hr />
+<h1 id="portal-error-handling">Portal Error Handling</h1>
+<h2 id="error-codes">Error codes</h2>
+<p>Error codes are 4 digits integer.</p>
+<p>The error codes starting with 1 are referred to PMS subsystem
+errors</p>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 14%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1000</td>
+<td>Generic error</td>
+<td>Unclassified error.</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>Internal Timeout Error</td>
+<td>These are internal system error at channel level. Brainy can try to
+resend the message again in a few minutes.<br>An incremental retry
+strategy can be put in place.</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>Internal Error</td>
+<td></td>
+</tr>
+<tr>
+<td>1003</td>
+<td>Internal Server Error</td>
+<td></td>
+</tr>
+<tr>
+<td>1004</td>
+<td>Database error</td>
+<td></td>
+</tr>
+<tr>
+<td>1010</td>
+<td>Malformed XML</td>
+<td>The message sent by Brainy to PMS is not compliant with the PMS
+specifications.</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>Invalid API error</td>
+<td></td>
+</tr>
+<tr>
+<td>1012</td>
+<td>Configuration Error</td>
+<td>This error happens whenever one of the mapping codes used in the
+message (room type id, rate plan id, etc) does not belong to the
+hotel.</td>
+</tr>
+<tr>
+<td>1100</td>
+<td>Auth denied</td>
+<td>These are authorization errors. Brainy should avoid to retry to send
+the message as is since an operator action is required to remove the
+cause of the error.</td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wrong Credentials</td>
+<td></td>
+</tr>
+<tr>
+<td>1103</td>
+<td>Insufficient access rights</td>
+<td></td>
+</tr>
+<tr>
+<td>1110</td>
+<td>Too Many requests</td>
+<td>Hotel has been temporarily blocked since PMS has received too many
+request in the last hour. Hotel is automatically unblocked every
+hour.</td>
+</tr>
+<tr>
+<td>1111</td>
+<td>Blocked account</td>
+<td>Hotel has been blocked. To unblock it Brainy should contact PMS
+support team.</td>
+</tr>
+</tbody>
+</table>
+<p>The error codes starting with 2 are referred to channel subsystem
+errors.</p>
+<table>
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 8%" />
+<col style="width: 90%" />
+</colgroup>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2001</td>
+<td>Internal Error</td>
+<td>These are internal system error at channel level. Brainy can try ro
+resend the message again in a few minutes.<br>An incremental retry
+strategy can be put in place.</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>Internal Server Error</td>
+<td></td>
+</tr>
+<tr>
+<td>2002</td>
+<td>Internal Timeout Error</td>
+<td></td>
+</tr>
+<tr>
+<td>2004</td>
+<td>Database error</td>
+<td></td>
+</tr>
+<tr>
+<td>2010</td>
+<td>Malformed XML</td>
+<td>The message sent by PMS to the channel is not compliant with the
+channel specifications.<br>The PMS team must operate to solve the
+related issue.</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>Invalid API Error</td>
+<td></td>
+</tr>
+<tr>
+<td>2100</td>
+<td>Auth denied</td>
+<td>These are authorization errors. Brainy should avoid to retry to send
+the message as is since an operator action is required to remove the
+cause of the error.</td>
+</tr>
+<tr>
+<td>2101</td>
+<td>Wrong Credentials</td>
+<td></td>
+</tr>
+<tr>
+<td>2103</td>
+<td>Insufficient access rights</td>
+<td></td>
+</tr>
+<tr>
+<td>2202</td>
+<td>Hotel not found</td>
+<td>This error happens whenever one of the mapping codes used in the
+message (room type id, rate plan id, etc) does not belong to the
+account.<br>An operator action is required to remove the cause of the
+error Message example: You either specified an invalid hotelID or your
+account is not linked to this hotel</td>
+</tr>
+<tr>
+<td>2203</td>
+<td>Mapping Error</td>
+<td></td>
+</tr>
+<tr>
+<td>2300</td>
+<td>Allotment restrictions</td>
+<td>It means that there is a close out request for one or more room type
+with a base allotment.</td>
+</tr>
+<tr>
+<td>2301</td>
+<td>Rate restrictions</td>
+<td>It happens when there exist some business restrictions like for
+instance:<br>• lower or upper threshold for rates<br>• upper threshold
+for minimum stay</td>
+</tr>
+<tr>
+<td>2302</td>
+<td>Min Stay Restrictions</td>
+<td></td>
+</tr>
+<tr>
+<td>2303</td>
+<td>Availability restrictions</td>
+<td></td>
+</tr>
+<tr>
+<td>2304</td>
+<td>Business restrictions</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="contacts">Contacts</h1>
+<h2 id="brainy">Brainy</h2>
+<p>info@brainy-rms.com</p>
+<h2 id="pms">PMS</h2>
+<p>your_help_account@yourwebsite.com +39 000 000 0000</p>
+<hr />
+    </div>
+    <script>
+        // Script per evidenziare la sintassi XML
+        function highlightXML() {
+            const pres = document.querySelectorAll('pre code');
+            pres.forEach(code => {
+                let html = code.innerHTML;
+
+                // Attributes e Values (prima dei tag)
+                html = html.replace(/([\w:-]+)=(&quot;[^&quot;]*&quot;|"[^"]*")/g,
+                    '<span class="xml-attribute">$1</span>=<span class="xml-value">$2</span>');
+
+                // Tags
+                html = html.replace(/(&lt;\/?)([a-zA-Z][\w:-]*)([^&]*?)(\/?&gt;)/g,
+                    '$1<span class="xml-tag">$2</span>$3$4');
+
+                // XML declaration
+                html = html.replace(/(&lt;\?xml.*?\?&gt;)/g, '<span class="xml-declaration">$1</span>');
+
+                code.innerHTML = html;
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', highlightXML);
+    </script>
+</body>
+</html>
