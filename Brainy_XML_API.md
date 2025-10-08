@@ -447,7 +447,6 @@ The reservation element has a very complex structure and many of the attributes 
 |       | @adults                     | Integer  | N         | Number of adults in this room stay                                                                                                    |
 |       | @children                   | Integer  | N         | Number of children in this room stay                                                                                                  |
 |       | @commission                 | Double   | N         | Commission amount applied by the channel for the current room stay                                                                    |
-|       | @cancellation_policy        | String   | N         | Description of the cancellation policy                                                                                                |
 |       | @status                     | String   | Y         | Room status (book, modified, cancelled etc)<br>The list of possible values is reported below                                          |
 | 3     | **childAge**                | String   | 0 - n     | It's a subelement of room element and it is used to report the age the children                                                       |
 |       | @age                        | Integer  | Y         | Age of the nth child in the room stay                                                                                                 |
@@ -552,14 +551,14 @@ If it occurs, as usual, the roomId returned in the reservation message is the PM
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
 <reservation id="91138035" hotelId="4086" portalId="63" checkin="2023-10-03" checkout="2023-10-05" firstName="Giulio" lastName="Cesare" rooms="2" adults="6" children="1" persons="7" city="Roma" country="IT" lang="en" address="Fori Imperiali" zipCode="00187" price="508.0" commission="0.0" status="4" currencycode="EUR" paymentType="4" offer="" creation_date="2023-08-17 09:41:33" dlm="2023-08-17 09:41:33" source_of_business="">
-    <Company CompanyId="4087" CompanyVat="08048050150" CompanyName="Tecnes Milano" CompanyAddress="Milano" CompanyCountry="IT" CompanyPostalcode="20137"/>
-    <room id="41699" description="Family" portalRoomDescription="Family" checkin="2023-10-03" checkout="2023-10-05" rateId="26505" rateDescription="" portalRateDescription="BB NR - Breakfast included" quantity="1" currency="EUR" price="240.0" totalPrice="236.0" adults="4" children="0" commission="0.0" status="4" cancellation_policy="If cancelled or in case of no-show, the guest will be charged &lt;b&gt;the total price&lt;/b&gt; .">
+    <Company CompanyId="4087" CompanyVat="01234567890" CompanyName="ACME Inc." CompanyAddress="Milano" CompanyCountry="IT" CompanyPostalcode="20137"/>
+    <room id="41699" description="Family" portalRoomDescription="Family" checkin="2023-10-03" checkout="2023-10-05" rateId="26505" rateDescription="" portalRateDescription="BB NR - Breakfast included" quantity="1" currency="EUR" price="240.0" totalPrice="236.0" adults="4" children="0" commission="0.0" status="4">
         <supplement supplementId="7271" description="parking" price="20.0" type="0" number="1" />
         <offer offerId="23911" description="Corporate Offer" amount_after_tax="-24.0"/>
     </room>
     <dayPrice day="2023-10-03" roomId="41699" price="120.0"/>
     <dayPrice day="2023-10-04" roomId="41699" price="120.0"/>
-    <room id="20022" description="Classic DBL" portalRoomDescription="Classic DBL" checkin="2023-10-03" checkout="2023-10-05" rateId="13086" rateDescription="" portalRateDescription="BB - Breakfast included" quantity="1" currency="EUR" price="280.0" totalPrice="272.0" adults="2" children="1" commission="0.0" status="4" cancellation_policy="&lt;p&gt;The guest can cancel free of charge &lt;b&gt;until the day of arrival&lt;/b&gt;.&lt;/p&gt;">
+    <room id="20022" description="Classic DBL" portalRoomDescription="Classic DBL" checkin="2023-10-03" checkout="2023-10-05" rateId="13086" rateDescription="" portalRateDescription="BB - Breakfast included" quantity="1" currency="EUR" price="280.0" totalPrice="272.0" adults="2" children="1" commission="0.0" status="4">
         <supplement supplementId="7271" description="parking" price="20.0" type="0" number="1" />
         <offer offerId="23911" description="Corporate Offer" amount_after_tax="-28.0"/>
     </room>
