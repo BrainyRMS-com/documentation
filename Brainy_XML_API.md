@@ -1,6 +1,6 @@
 ---
-version: "1.7.11"
-publishdate: "2025-10-07"
+version: "1.7.12"
+publishdate: "2025-10-20"
 ---
 
 # INTRODUCTION
@@ -555,17 +555,17 @@ If it occurs, as usual, the roomId returned in the reservation message is the PM
     <room id="41699" description="Family" portalRoomDescription="Family" checkin="2023-10-03" checkout="2023-10-05" rateId="26505" rateDescription="" portalRateDescription="BB NR - Breakfast included" quantity="1" currency="EUR" price="240.0" totalPrice="236.0" adults="4" children="0" commission="0.0" status="4">
         <supplement supplementId="7271" description="parking" price="20.0" type="0" number="1" />
         <offer offerId="23911" description="Corporate Offer" amount_after_tax="-24.0"/>
+    	<dayPrice day="2023-10-03" roomId="41699" price="120.0"/>
+    	<dayPrice day="2023-10-04" roomId="41699" price="120.0"/>
     </room>
-    <dayPrice day="2023-10-03" roomId="41699" price="120.0"/>
-    <dayPrice day="2023-10-04" roomId="41699" price="120.0"/>
     <room id="20022" description="Classic DBL" portalRoomDescription="Classic DBL" checkin="2023-10-03" checkout="2023-10-05" rateId="13086" rateDescription="" portalRateDescription="BB - Breakfast included" quantity="1" currency="EUR" price="280.0" totalPrice="272.0" adults="2" children="1" commission="0.0" status="4">
         <supplement supplementId="7271" description="parking" price="20.0" type="0" number="1" />
         <offer offerId="23911" description="Corporate Offer" amount_after_tax="-28.0"/>
+		<childAge age="3"/>
+        <dayPrice day="2023-10-03" roomId="20022" price="140.0"/>
+        <dayPrice day="2023-10-04" roomId="20022" price="140.0"/>
+        <guest firstName="Cleopatra" secondName="Regina" />
     </room>
-    <childAge age="3"/>
-    <dayPrice day="2023-10-03" roomId="20022" price="140.0"/>
-    <dayPrice day="2023-10-04" roomId="20022" price="140.0"/>
-    <guest firstName="Cleopatra" secondName="Regina" />
 </reservation>
 </Response>
 ```
