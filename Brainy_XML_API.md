@@ -1,6 +1,6 @@
 ---
-version: "1.7.12"
-publishdate: "2025-10-20"
+version: "1.7.13"
+publishdate: "2025-10-21"
 ---
 
 # INTRODUCTION
@@ -550,7 +550,7 @@ If it occurs, as usual, the roomId returned in the reservation message is the PM
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-<reservation id="91138035" hotelId="4086" portalId="63" checkin="2023-10-03" checkout="2023-10-05" firstName="Giulio" lastName="Cesare" rooms="2" adults="6" children="1" persons="7" city="Roma" country="IT" lang="en" address="Fori Imperiali" zipCode="00187" price="508.0" commission="0.0" status="4" currencycode="EUR" paymentType="4" offer="" creation_date="2023-08-17 09:41:33" dlm="2023-08-17 09:41:33" source_of_business="">
+<reservation id="91138035" hotelId="4086" portalId="63" checkin="2023-10-03" checkout="2023-10-05" firstName="Giulio" lastName="Cesare" rooms="2" adults="6" children="1" persons="7" city="Roma" country="IT" lang="en" address="Fori Imperiali" zipCode="00187" price="508.0" commission="0.0" status="4" currencycode="EUR" paymentType="4" offer="" creation_date="2023-08-17 09:41:33" dlm="2023-08-17 09:41:33" source_of_business="Booking.com">
     <Company CompanyId="4087" CompanyVat="01234567890" CompanyName="ACME Inc." CompanyAddress="Milano" CompanyCountry="IT" CompanyPostalcode="20137"/>
     <room id="41699" description="Family" portalRoomDescription="Family" checkin="2023-10-03" checkout="2023-10-05" rateId="26505" rateDescription="" portalRateDescription="BB NR - Breakfast included" quantity="1" currency="EUR" price="240.0" totalPrice="236.0" adults="4" children="0" commission="0.0" status="4">
         <supplement supplementId="7271" description="parking" price="20.0" type="0" number="1" />
