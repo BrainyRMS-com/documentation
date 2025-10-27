@@ -76,3 +76,13 @@ ALTER TABLE your_dataset.your_table_new
 - Semplicità: La sintassi è chiara e compatta.
 
 Dopo aver eseguito questa query, la tua tabella `your_dataset.your_table` sarà partizionata per mese sul campo `date` e clusterizzata per `city` e `receiveTime`, **mantenendo tutti i dati originali**.
+
+
+## Aggiungere una Property ad un account
+
+- Entrare come v2admin.
+- https://v2.brainyrms.com/pmsdashboard/manageaccount
+- Nel box `List User Accounts` cercare l'account che si vuole modificare.
+- Fare clic su di esso.
+- Selezionare la Propertyi interessata.
+- Click su `Update Account`.
