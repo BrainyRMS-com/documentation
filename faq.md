@@ -76,3 +76,16 @@ Inviare un messaggio sul topic `roomTypesChanged` con un payload simile a questo
 ```
 
 NB: c'è già uno script pronto per questo, che si trova qui: https://github.com/lucamarogna-brainy/aa_debug/blob/main/pubsub_roomTypesChanged.js.
+
+
+### Come visualizzare i dati "monthly" del passato?
+
+Ad esempio, se mi posiziono su gennaio 2025, voglio vedere il confronto con gennaio 2024.
+
+Se la property ha una reference/past season impostata, però, la funzione delle LY metrics potrebbe saltare volutamente quel periodo.
+
+La cosa strana è che, invece, nella BI i dati si vedono tutti poiché l'interrogazione viene fatta su tutto il periodo tramite la daily_recap.
+
+Per fare in modo che anche su front-end Brainy si vedano i dati del passato è necessario:
+- aggiornare la `seasonUser` in modo da coprire tutto il periodo (es. gennaio—dicembre 2024);
+- dopodiché va rilanciata la `LY metrics`.
