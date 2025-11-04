@@ -1,6 +1,6 @@
 ---
-version: "1.7.14"
-publishdate: "2025-10-21"
+version: "1.7.15"
+publishdate: "2025-11-04"
 ---
 
 # INTRODUCTION
@@ -400,7 +400,7 @@ The reservation element has a very complex structure and many of the attributes 
 | 1     | **reservation**             |          | 0 - n     |                                                                                                                                       |
 |       | @id                         | String   | Y         | PMS Reservation unique identifier                                                                                                     |
 |       | @portalId                   | String   | Y         | PMS Portal identifier                                                                                                                 |
-|       | @status                     | String   | Y         | Reservation status<br>The list of possible values is reported below                                                                   |
+|       | @status                     | String   | Y         | Reservation status code<br>The list of possible values is reported below                                                              |
 |       | @hotelId                    | String   | Y         | PMS Hotel Id                                                                                                                          |
 |       | @dlm                        | DateTime | Y         | PMS last retrieval date and time                                                                                                      |
 |       | @checkin                    | Date     | Y         | If the resravtion is for multiple roomstays with different checkin date the first one is taken                                        |
@@ -447,7 +447,7 @@ The reservation element has a very complex structure and many of the attributes 
 |       | @adults                     | Integer  | N         | Number of adults in this room stay                                                                                                    |
 |       | @children                   | Integer  | N         | Number of children in this room stay                                                                                                  |
 |       | @commission                 | Double   | N         | Commission amount applied by the channel for the current room stay                                                                    |
-|       | @status                     | String   | Y         | Room status (book, modified, cancelled etc)<br>The list of possible values is reported below                                          |
+|       | @status                     | String   | Y         | Room status code (book, modified, cancelled etc)<br>The list of possible values is reported below                                     |
 | 3     | **childAge**                | String   | 0 - n     | It's a subelement of room element and it is used to report the age the children                                                       |
 |       | @age                        | Integer  | Y         | Age of the nth child in the room stay                                                                                                 |
 | 3     | **dayPrice**                |          | 0 - n     | Subelement used to specify the room stay daily base amount                                                                            |
