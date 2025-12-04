@@ -1,6 +1,6 @@
 ---
-version: "1.7.15"
-publishdate: "2025-11-04"
+version: "1.7.16"
+publishdate: "2025-12-04"
 ---
 
 # INTRODUCTION
@@ -316,7 +316,7 @@ Returned information are a list on reservation elements.
 
 ---
 
-## Reservations Notification Push
+## Reservations Notification Push — Webhook
 
 The process consists of 2 parts.
 
