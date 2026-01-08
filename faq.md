@@ -89,3 +89,15 @@ La cosa strana è che, invece, nella BI i dati si vedono tutti poiché l'interro
 Per fare in modo che anche su front-end Brainy si vedano i dati del passato è necessario:
 - aggiornare la `seasonUser` in modo da coprire tutto il periodo (es. gennaio—dicembre 2024);
 - dopodiché va rilanciata la `LY metrics`.
+
+
+### Come inviare i prezzi anche alle camere virtuali (con quantity=0)?
+
+Sono state fatte delle eccezioni ad hoc per alcuni PMS e alcune property (ad esempio "Grand Hotel President" di Passepartout).
+
+Guarda nei file `core.js` (linea 778) e `occupancy.js` (linea 401) della repository `brainy-v2` per capire come aggiungerne un'altra.
+
+Inoltre, in base al PMS, potrebbe essere necessario una modifica anche al download delle camere e la creazione del relativo parent_child_mapping.
+Ad esempio, per **Passepartout**, sono state fatte delle eccezioni nei file `passepartout.py` (linea 166) e `processing.py` (linea 155) della repository `roomtype-change`.
+
+Infine, sempre in base alle istruzioni ricevute dal cliente, potrebbe essere necessario impostare delle proporzioni fisse su queste camere virtuali (o comunque con quantity=0).
