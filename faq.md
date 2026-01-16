@@ -112,6 +112,9 @@ per tutte le camere di cui **NON** si desidera inviare i prezzi.
 Questa modifica è attiva dal 2026-01-16, per mezzo della commit
 https://github.com/lucamarogna-brainy/brainy-v2/commit/9332dc527b6953e4bc84eca013b999442c9d628e.
 
+Ma poi va fatto il filtro anche sulla repository del PMS specifico, nella funzione di invio prezzi.
+Esempio: https://github.com/BrainyRMS-com/ericsoft/commit/af3c9635f512e6aa7ce7e964832314f8bf7171c4#diff-9bd8ce8b1e7d5ec5cad8a8f899cbc6b60d09a741aee53f629784d6a0eb0845c6R268-R272.
+
 Esempio tratto da un caso reale (Ericsoft, Salice Resort, richiesta del 2026-01-15):
 > Inviamo solo la GIRAS.
 
