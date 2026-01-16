@@ -101,3 +101,36 @@ Inoltre, in base al PMS, potrebbe essere necessario una modifica anche al downlo
 Ad esempio, per **Passepartout**, sono state fatte delle eccezioni nei file `passepartout.py` (linea 166) e `processing.py` (linea 155) della repository `roomtype-change`.
 
 Infine, sempre in base alle istruzioni ricevute dal cliente, potrebbe essere necessario impostare delle proporzioni fisse su queste camere virtuali (o comunque con quantity=0).
+
+### Come inviare i prezzi di una sola tipologia di camera? Come disabilitare invio prezzi per certe camere?
+
+Per le strutture per le quali si desidera abilitare l'invio dei prezzi, 
+ma limitatamente ad un sottoinsieme di camere e non a tutte quelle disponibili,
+bisogna impostare `roomtypes` aggiungendo la proprietà `allowPushPrices: false` 
+per tutte le camere di cui **NON** si desidera inviare i prezzi.
+
+Questa modifica è attiva dal 2026-01-16, per mezzo della commit
+https://github.com/lucamarogna-brainy/brainy-v2/commit/9332dc527b6953e4bc84eca013b999442c9d628e.
+
+Esempio tratto da un caso reale (Ericsoft, Salice Resort, richiesta del 2026-01-15):
+> Inviamo solo la GIRAS.
+
+```json5
+[
+  {
+    "id": 'COMFORT T',
+    "disabled": false,
+    "allowPushPrices": false, // <--- non inviamo i prezzi di questa camera
+  },
+  {
+    "id": 'Gir Up',
+    "disabled": false,
+    "allowPushPrices": false, // <--- non inviamo i prezzi di questa camera
+  },
+  {
+    "id": 'GIRAS',
+    "disabled": false,
+    // <--- allowPushPrices non specificato (cioè `undefined`)
+  }
+]
+```
